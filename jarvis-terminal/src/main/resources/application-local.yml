@@ -1,0 +1,54 @@
+server:
+  port: 8081
+  context-path: /term
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+#
+spring:
+  application:
+    name: service-web
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/bank?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+    username: root
+    password: caozhengjie
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+#mybatis
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/*.xml
+  type-aliases-package: com.youbang
+  config-locations: classpath:mybatis/mybatis-config.xml
+  table:
+    auto: update
+  model:
+    pack: com.youzhang.model
+  database:
+    type: mysql
+
+#彩色日志
+spring.output.ansi.enabled: detect
+
+# 图片上传地址
+upload:
+  img-path: /Users/caozhengjie/Downloads/test/
+
+rpcServer:
+  ioThreadNum: 5
+  backlog: 1024
+  port: 20011
+
